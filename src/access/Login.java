@@ -64,7 +64,7 @@ public class Login extends JFrame {
 		contentPane.add(textPassword);
 		textPassword.setColumns(10);
 		
-		final UserData data = new UserData();		
+		final DadosUsuario data = new DadosUsuario();		
 		JButton btnButton = new JButton("Login");
 		btnButton.setBounds(165, 174, 89, 23);
 		btnButton.addActionListener(new ActionListener() {

@@ -1,7 +1,8 @@
 package access;
 
-public class UserData {
-	public UserData() {
+
+public class DadosUsuario {
+	public DadosUsuario() {
 		
 	}
 	String usuario="";
@@ -16,5 +17,4 @@ public class UserData {
 		else {
 			return 0;
 		}
-	}
-}
+	}}
