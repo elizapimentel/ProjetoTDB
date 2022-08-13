@@ -8,12 +8,11 @@ public class SignUpData {
 	String endereco = "";
 	String tel="";
 	String ref="";
-	int num;
-	int id;
+	String num="";
 	
 	public int validClient() {
-		nome=Cadastro.textNome.getText();
-		tel=Cadastro.textTel.getText();
+		nome=CadastroCliente.textNome.getText();
+		tel=CadastroCliente.textTel.getText();
 		if(nome.equals(nome) && tel.equals(tel)) {
 			return 1;
 		} else {

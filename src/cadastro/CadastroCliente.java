@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import conexao.BDClientes;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
@@ -13,8 +16,12 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Cadastro extends JFrame {
+public class CadastroCliente extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	public static JTextField textNome;
 	public static JTextField textTel;
@@ -30,7 +37,7 @@ public class Cadastro extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cadastro frame = new Cadastro();
+					CadastroCliente frame = new CadastroCliente();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -42,7 +49,7 @@ public class Cadastro extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Cadastro() {
+	public CadastroCliente() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -115,6 +122,9 @@ public class Cadastro extends JFrame {
 		btnButtonCadastro.setBounds(190, 227, 89, 23);
 		btnButtonCadastro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				BDClientes sintaxeBanco = new BDClientes();
+				sintaxeBanco.conectar();
+				sintaxeBanco.inserirCliente(textNome.getText(), textTel.getText(), textEnd.getText(), textNum.getText(), textRef.getText());
 				if(data.validClient()==1) {
 					JOptionPane.showMessageDialog(null, "Cliente cadastrado(a) com sucesso");
 				} else {
