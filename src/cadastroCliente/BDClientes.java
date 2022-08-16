@@ -33,20 +33,22 @@ public class BDClientes {
 		}
 	}
 
-		//CREATE
-	public void inserirCliente(String nome_cliente, String telefone, String endereco, String numero_end, String ponto_ref) {
+	// CREATE
+	public void inserirCliente(String nome_cliente, String telefone, String endereco, String numero_end,
+			String ponto_ref) {
 		try {
 			String query = "INSERT INTO clientes (nome_cliente, telefone, endereco, numero_end, ponto_ref) "
-					+ "VALUES ('" + nome_cliente + "', '" + telefone + "', "
-					+ "'" + endereco + "', '" + numero_end + "', '" + ponto_ref + "')";
+					+ "VALUES ('" + nome_cliente + "', '" + telefone + "', " + "'" + endereco + "', '" + numero_end
+					+ "', '" + ponto_ref + "')";
 
-			System.out.println(query);			
+			System.out.println(query);
 			this.statement.executeUpdate(query);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
 	}
-		//LIST
+
+	// READ
 	public void listaClientes() {
 		try {
 			String query = "select * from clientes";
@@ -58,14 +60,37 @@ public class BDClientes {
 				String telefone = resultset.getString("telefone");
 				String endereco = resultset.getString("endereco");
 				String num_end = resultset.getString("numero_end");
-				String referencia = resultset.getString("ponto_ref");		
-				System.out.println("id_cliente:" + id);
-				System.out.println("nome_cliente:" + nome);
-				System.out.println("telefone"+telefone);
-				System.out.println("endereco"+endereco);
-				System.out.println("numero_end"+num_end);
-				System.out.println("ponto_ref"+referencia);
+				String referencia = resultset.getString("ponto_ref");
+				System.out.println("id_cliente: " + id);
+				System.out.println("nome_cliente: " + nome);
+				System.out.println("telefone: " + telefone);
+				System.out.println("endereco: " + endereco);
+				System.out.println("numero_end: " + num_end);
+				System.out.println("ponto_ref: " + referencia);
 			}
+		} catch (Exception e) {
+			System.out.println("Erro" + e.getMessage());
+		}
+	}
+
+	// UPDATE
+	public void atualizaCliente(String id_cliente, String nome_cliente, String telefone, String endereco,
+			String numero_end, String ponto_ref) {
+		try {
+			String query = "UPDATE clientes SET nome_cliente = '" + nome_cliente + "', telefone = '" + telefone
+					+ "', endereco = '" + endereco + "', numero_end = '" + numero_end + "', ponto_ref = '" + ponto_ref
+					+ "' WHERE id_cliente = '" + id_cliente + "'";
+			this.statement.executeUpdate(query);
+		} catch (Exception e) {
+			System.out.println("Erro" + e.getMessage());
+		}
+	}
+
+	// DELETE
+	public void deletaCliente(String id_cliente) {
+		try {
+			String query = "DELETE FROM clientes WHERE id_cliente = '" + id_cliente + "'";
+			this.statement.executeUpdate(query);
 		} catch (Exception e) {
 			System.out.println("Erro" + e.getMessage());
 		}

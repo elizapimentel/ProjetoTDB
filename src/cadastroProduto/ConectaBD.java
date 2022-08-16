@@ -9,6 +9,9 @@ public class ConectaBD {
 		if(sintaxeBanco.estaConectado()) {
 			
 			sintaxeBanco.listaProdutos();
+			//sintaxeBanco.deletaProduto("14");
+			//sintaxeBanco.atualizaProduto("11", "paracetamol", "8.65", "200", "S", "S");
+			
 
 			System.out.println("Banco conectado");
 		}else {
