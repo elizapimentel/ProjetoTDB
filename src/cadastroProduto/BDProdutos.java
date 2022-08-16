@@ -111,6 +111,24 @@ public class BDProdutos {
 			System.out.println(e.getMessage());
 		}
 	}
+	//CONTROLE DE ESTOQUE
+	public void qtdProdutos(String nome_produto) {
+		try {
+			String query = "SELECT qtd_produto FROM produtos WHERE nome_produto='" + nome_produto + "';";
+			this.resultset = this.statement.executeQuery(query);
+			this.statement = this.connection.createStatement();
+			while (this.resultset.next()) {
+				String qtd = resultset.getString("qtd_produto");
+				System.out.println("qtd_produto: " + qtd);
+				if( qtd.equals("0")) {
+					System.out.println("Produto não está em estoque");
+				}
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
 
 
 }
