@@ -1,4 +1,4 @@
-package conexao;
+package cadastroProduto;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -35,9 +35,14 @@ public class BDProdutos {
 		
 		//CREATE
 
-    public void inserirProduto(String nome, String valorUnit, String qtd, String generico, String remedio ) {
+    public void inserirProduto(String nome_produto, String valor_unitario, String qtd_produto, String flag_generico, String se_remedio ) {
         try {
-            String query = "insert into produtos" + "values('" + nome + "','" + valorUnit + "','" + qtd + "', '" + generico + "', '"+remedio+"');";
+        	if(flag_generico.equals("S")) {
+        		double d= Double.parseDouble(valor_unitario);
+        		d = (d*20)/100;
+                valor_unitario = String.valueOf(d);
+        	}
+            String query = "insert into produtos (nome_produto, valor_unitario, qtd_produto, flag_generico, se_remedio) values('" + nome_produto + "','" + valor_unitario + "','" + qtd_produto + "', '" + flag_generico + "', '"+se_remedio+"');";
             System.out.println(query);
             this.statement.executeUpdate(query);
         } catch (Exception e) {

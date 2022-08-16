@@ -36,8 +36,11 @@ public class BDClientes {
 		//CREATE
 	public void inserirCliente(String nome_cliente, String telefone, String endereco, String numero_end, String ponto_ref) {
 		try {
-			String query = "insert into clientes (nome_cliente, telefone, endereco, numero_end, ponto_ref) values('" + nome_cliente + "','" + telefone + "','" + endereco + "','" + numero_end + "','" + ponto_ref + "');";
-			System.out.println(query);
+			String query = "INSERT INTO clientes (nome_cliente, telefone, endereco, numero_end, ponto_ref) "
+					+ "VALUES ('" + nome_cliente + "', '" + telefone + "', "
+					+ "'" + endereco + "', '" + numero_end + "', '" + ponto_ref + "')";
+
+			System.out.println(query);			
 			this.statement.executeUpdate(query);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -67,6 +70,5 @@ public class BDClientes {
 			System.out.println("Erro" + e.getMessage());
 		}
 	}
-
 
 }

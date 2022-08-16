@@ -1,17 +1,17 @@
 package cadastroCliente;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import java.awt.Color;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
 
 public class FormCliente extends JFrame {
 
@@ -113,7 +113,7 @@ public class FormCliente extends JFrame {
 		textID.setBounds(71, 64, 46, 20);
 		contentPane.add(textID);
 		textID.setColumns(10);
-		
+				
 		final BDClientes connBanco = new BDClientes();
 		JButton btnButtonCadastro = new JButton("Cadastrar");
 		btnButtonCadastro.setBounds(190, 227, 89, 23);
@@ -121,10 +121,15 @@ public class FormCliente extends JFrame {
 			public void actionPerformed(ActionEvent e) {				
 				connBanco.conectar();
 				connBanco.inserirCliente(textNome.getText(), textTel.getText(), textEnd.getText(), textNum.getText(), textRef.getText());
-				if(connBanco.estaConectado()) {
-					JOptionPane.showMessageDialog(null, "Cliente cadastrado(a) com sucesso");
+				if(connBanco.estaConectado()){
+					JOptionPane.showMessageDialog(null, "Cadastro realizado com sucesso");
+					textNome.setText("");
+					textTel.setText("");
+					textEnd.setText("");
+					textNum.setText("");
+					textRef.setText("");
 				} else {
-					JOptionPane.showMessageDialog(null, "Cliente não cadastrado(a). Informe Nome e Telefone!");
+					JOptionPane.showMessageDialog(null, "Cadastro não realizado");
 				}
 			}
 		});

@@ -1,11 +1,9 @@
-package conexao;
+package cadastroProduto;
 
 public class ConectaBD {
 
 	public static void main(String[] args) {
 		BDProdutos sintaxeBanco = new BDProdutos();
-		BDClientes connBanco = new BDClientes();
-		connBanco.conectar();
 		sintaxeBanco.conectar();
 
 		if(sintaxeBanco.estaConectado()) {
@@ -13,12 +11,7 @@ public class ConectaBD {
 			sintaxeBanco.listaProdutos();
 
 			System.out.println("Banco conectado");
-		}		
-		if (connBanco.estaConectado()){
-			connBanco.listaClientes();
-			System.out.println("Banco conectado!");
-		}
-		else {
+		}else {
 			System.out.println("Não foi possível conectar ao banco");
 		}
 
