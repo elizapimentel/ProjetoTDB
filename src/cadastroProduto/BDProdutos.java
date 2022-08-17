@@ -89,8 +89,20 @@ public class BDProdutos {
 
 	// UPDATE
 	public void atualizaProduto(String id_produto, String nome_produto, String valor_unitario, String qtd_produto,
-			String flag_generico, String se_remedio, String valor_final) {
+			String flag_generico, String se_remedio, String valor_desconto, String valor_final) {
 		try {
+			if (flag_generico.equals("S".toLowerCase())) {
+				double d = Double.parseDouble(valor_unitario);
+				d = (d * 20) / 100;
+				valor_desconto = String.valueOf(d);
+			} else {
+				valor_desconto = "0";
+			}
+			double d1 = Double.parseDouble(valor_unitario);
+			double d2 = Double.parseDouble(valor_desconto);
+			double d3 = d1 - d2;
+			valor_final = String.valueOf(d3);
+
 			String query = "UPDATE produtos SET nome_produto='" + nome_produto + "', valor_unitario='" + valor_unitario
 					+ "', qtd_produto='" + qtd_produto + "', flag_generico='" + flag_generico + "', se_remedio='"
 					+ se_remedio + "', '" + valor_final + "' where id_produto='" + id_produto + "';";

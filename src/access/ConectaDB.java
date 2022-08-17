@@ -7,7 +7,9 @@ public class ConectaDB {
 		sintaxeBanco.conectar();
 
 		if(sintaxeBanco.estaConectado()) {
-			sintaxeBanco.criarUsuario("admin", "admin");
+			//sintaxeBanco.criarUsuario("admin", "admin");
+			sintaxeBanco.editarSenha("admin", "senhadificil");
+			sintaxeBanco.deletarUsuario("1");
 
 			System.out.println("Banco conectado");
 		}else {
