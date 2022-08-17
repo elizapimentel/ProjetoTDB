@@ -15,7 +15,7 @@ O desafio consiste na construção de uma API contendo CRUD completo para conex�
 
 <br>
 
-### 📑 Arquitetura do Projeto
+## 📑 Arquitetura do Projeto
 
 ```
 ├──📁 ProjetoTDB
@@ -41,9 +41,11 @@ O desafio consiste na construção de uma API contendo CRUD completo para conex�
     └─📄README.md      
 ```
 
-### 🛣️ Rotas
+## 🛣️ Rotas
+<br>
 
-*Clientes*
+### *Clientes*
+<br>
 
 - Create: 
 ```
@@ -66,8 +68,10 @@ WHERE id_cliente = id_cliente
 ```
 DELETE FROM clientes WHERE id_cliente = id_cliente;
 ```
+<br>
 
-*Produtos*
+### *Produtos*
+<br>
 
 - Create:
 
@@ -97,4 +101,28 @@ SELECT * from produtos;
 ```
 SELECT qtd_produto FROM produtos WHERE nome_produto=nome_produto;
 ```
+<br>
 
+### *Login*
+<br>
+
+- Create
+```
+INSERT INTO login 
+VALUES (usuario, senha);
+```
+
+- Read
+```
+SELECT * FROM login WHERE usuario = usuario AND senha = senha;
+```
+
+- Update
+```
+UPDATE login SET senha = senha WHERE usuario = usuario;
+```
+
+- Delete
+```
+DELETE FROM login WHERE id = id ;
+```
