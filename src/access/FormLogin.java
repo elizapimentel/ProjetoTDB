@@ -10,10 +10,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import cadastroCliente.FormCliente;
+import cadastroProduto.FormProdutos;
+
 import javax.swing.JLabel;
 
 
-public class Login extends JFrame {
+public class FormLogin extends JFrame {
 
 	private JPanel contentPane;
 	public static JTextField textUser;
@@ -26,7 +30,7 @@ public class Login extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Login frame = new Login();
+					FormLogin frame = new FormLogin();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -38,7 +42,7 @@ public class Login extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Login() {
+	public FormLogin() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -64,19 +68,24 @@ public class Login extends JFrame {
 		contentPane.add(textPassword);
 		textPassword.setColumns(10);
 		
-		final DadosUsuario data = new DadosUsuario();		
+		final BDLogin conn = new BDLogin();		
 		JButton btnButton = new JButton("Login");
 		btnButton.setBounds(165, 174, 89, 23);
 		btnButton.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				if(data.validaPass()==1) {
-					JOptionPane.showMessageDialog(null, "Seja Bem Vindx");
-				}
+				conn.conectar();
+				conn.verificarUsuario(textUser.getText(), textPassword.getText());
+				if(conn.estaConectado()) {
+					JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
+					FormProdutos formProdutos = new FormProdutos();
+					formProdutos.setVisible(true);
+					FormCliente formCliente = new FormCliente();
+					formCliente.setVisible(true);
+				}				
 				else {
-					JOptionPane.showMessageDialog(null, "Usuárix inválidx");
-				}
-				
+					JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos!");
+				}				
 			}
 			
 		});
