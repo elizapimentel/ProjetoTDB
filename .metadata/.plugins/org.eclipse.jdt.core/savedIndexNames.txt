@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\Users\U002553\Documents\Estudo\IfBlackThanCode_programmingAssignments\ProjetoTDB\.metadata\.plugins\org.eclipse.jdt.core
-1911445385.index
-2310078878.index
-1865797976.index
