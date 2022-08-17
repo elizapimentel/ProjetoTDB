@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+C:\Users\eliza\OneDrive\Área de Trabalho\workspace\ProjetoTDB\.metadata\.plugins\org.eclipse.jdt.core
-3049942514.index
-2707940638.index
-4126797049.index
-1865797976.index
